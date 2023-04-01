@@ -2,14 +2,14 @@
 
 import random
 
-print
-print "-------------------------------------"
-print "Welcome to rock-paper-scissors!"
-print
-print 'Enter "r" for rock'
-print '      "p" for paper'
-print '      "s" for scissors'
-print '      "e" to end the game.'
+print()
+print( "-------------------------------------")
+print( "Welcome to rock-paper-scissors!")
+print()
+print( 'Enter "r" for rock')
+print( '      "p" for paper')
+print( '      "s" for scissors')
+print( '      "e" to end the game.')
 
 # number of moves the computer remembers
 ai_memory_length = 6
@@ -68,7 +68,7 @@ def PickAiResponse(history,strategy,current):
 		return valid_responses[random.randint(0,2)]
 	elif (strategy == 'twoWay'):
 		tab = MakeTwoWayTable(history)
-		print tab
+		print( tab)
 		thisVec = tab[response_to_num[current]]
 		maxVal = max(thisVec)
 		maxInds = [i for i,j in enumerate(thisVec) if j == maxVal]
@@ -80,12 +80,12 @@ def PickAiResponse(history,strategy,current):
 while response != "e":
 	response = ""
 	while response not in valid_responses:
-		print
-		print 'Enter your response:'
-		print '[r]ock   [p]aper   [s]cissors   [e]nd'
-		response = raw_input("")
-	print
-	print 'You responded ' + response_strings[response] + '!'
+		print()
+		print('Enter your response:')
+		print('[r]ock   [p]aper   [s]cissors   [e]nd')
+		response = input("")
+	print()
+	print( 'You responded ' + response_strings[response] + '!')
 	if response in game_responses:
 		# update stats
 		response_vec.append(response)
@@ -105,39 +105,39 @@ while response != "e":
 
 		# report results
 		num_rounds += 1
-		print 'I responded ' + response_strings[ai_response]
+		print( 'I responded ' + response_strings[ai_response])
 		if response == ai_response:
-			print 'This round is a DRAW'
+			print( 'This round is a DRAW')
 			num_draw += 1
 		elif (response == 'r'):
 			if ai_response == 'p':
-				print i_win
+				print( i_win)
 				num_ai_wins += 1
 			else:
-				print you_win
+				print( you_win)
 		elif (response == 'p'):
 			if ai_response == 's':
-				print i_win
+				print( i_win)
 				num_ai_wins += 1
 			else:
-				print you_win
+				print( you_win)
 		else: # response is s
 			if ai_response == 'r':
-				print i_win
+				print( i_win)
 				num_ai_wins += 1
 			else:
-				print you_win
+				print( you_win)
 	else:
 		break
-	print
-	raw_input('Press any key to continue')
+	print()
+	input('Press any key to continue')
 
-print "-------------------------------------"
-print "Thanks for playing! Here are your stats:"
-print response_vec
-print totals
-print 'AI won ' + str(num_ai_wins/num_rounds*100) + '% of the time'
-print 'Draws ' + str(num_draw/num_rounds*100) + '% of the time'
-print 'Player won ' + str((num_rounds - num_ai_wins - num_draw)/num_rounds*100) + '% of the time'
-print 'Bye!'
-print "-------------------------------------"
+print( "-------------------------------------")
+print( "Thanks for playing! Here are your stats:")
+print( response_vec)
+print( totals)
+print( 'AI won ' + str(num_ai_wins/num_rounds*100) + '% of the time')
+print( 'Draws ' + str(num_draw/num_rounds*100) + '% of the time')
+print( 'Player won ' + str((num_rounds - num_ai_wins - num_draw)/num_rounds*100) + '% of the time')
+print( 'Bye!')
+print( "-------------------------------------")
